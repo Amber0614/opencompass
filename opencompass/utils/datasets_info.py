@@ -5,7 +5,7 @@ DATASETS_MAPPING = {
         "local": "./data/mp20/mp20_test.jsonl",
     },
     "opencompass/ELBench": {
-        "ms_id": "ZeroLoss-Lab/ELBench",
+        "ms_id": None,
         "hf_id": "ZeroLoss-Lab/ELBench",
         "local": "./data/elbench",
     },

@@ -40,12 +40,11 @@ from .utils import get_judgeanswer_and_reference
 #
 # ELBench ships its files under a data root that holds the four original
 # Chinese top-level module directories: 安全可信 / 通用 / 高阶育人 / 基本教育.
-# The same layout is published on HuggingFace / ModelScope
+# The same layout is published on HuggingFace
 # (ZeroLoss-Lab/ELBench) and registered in ``datasets_info.py`` as
 # ``opencompass/ELBench`` -> ``./data/elbench``.
 #
 # Resolution mirrors ChemBench and other OC datasets:
-#   * ``DATASET_SOURCE=ModelScope`` -> download the ModelScope snapshot;
 #   * ``DATASET_SOURCE=HF``          -> download the HuggingFace snapshot;
 #   * otherwise (default)            -> local mode, data must already be at
 #                                        ``$COMPASS_DATA_CACHE/data/elbench``.
@@ -65,11 +64,7 @@ def _elbench_data_root():
     dataset_source = os.environ.get('DATASET_SOURCE')
     resolved = get_data_path('opencompass/ELBench')
 
-    if dataset_source == 'ModelScope':
-        from modelscope import dataset_snapshot_download
-        logger.info(f'ELBench: downloading from ModelScope {resolved}')
-        root = dataset_snapshot_download(resolved)
-    elif dataset_source == 'HF':
+    if dataset_source == 'HF':
         from huggingface_hub import snapshot_download
         logger.info(f'ELBench: downloading from HuggingFace {resolved}')
         root = snapshot_download(repo_id=resolved, repo_type='dataset')
@@ -81,7 +76,7 @@ def _elbench_data_root():
         raise FileNotFoundError(
             f'ELBench data root not found: "{root}". '
             f'Set COMPASS_DATA_CACHE to the parent of ``data/elbench``, or '
-            f'use DATASET_SOURCE=HF/ModelScope to download automatically.')
+            f'use DATASET_SOURCE=HF to download automatically.')
     _ELBENCH_DATA_ROOT = root
     return root
 

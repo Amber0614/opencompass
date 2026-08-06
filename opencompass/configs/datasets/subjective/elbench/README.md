@@ -30,8 +30,8 @@ pipeline.
 
 The data is **downloaded automatically** from the public HuggingFace dataset
 [`ZeroLoss-Lab/ELBench`](https://huggingface.co/datasets/ZeroLoss-Lab/ELBench) on
-first run (or from ModelScope when `DATASET_SOURCE=ModelScope`); nothing is
-committed to OpenCompass. ELBench's original file names and layout are kept; the
+first run with `DATASET_SOURCE=HF`; nothing is committed to OpenCompass.
+ELBench's original file names and layout are kept; the
 public dataset hosts them at the repository root:
 
 ```text
